@@ -20,6 +20,14 @@ def prep_telco(df):
     df_telco.total_charges=df_telco.total_charges.str.replace(' ','0').astype('float')
     return df_telco
 
+def prep_telcowdate(df):
+    df_telco=acquire.get_telco_data()
+    df_telco.drop(columns=['internet_service_type_id','contract_type_id','payment_type_id',
+                       ],inplace=True)
+    dummy_df_telco = pd.get_dummies(df_telco[['partner','dependents','phone_service','multiple_lines','online_security','online_backup','device_protection','tech_support','streaming_tv','streaming_movies','paperless_billing','churn','internet_service_type','gender']], dummy_na=False, drop_first=[True])
+    df_telco=pd.concat([df_telco ,dummy_df_telco],axis=1)
+    df_telco.drop(columns=['partner','dependents','phone_service','multiple_lines','online_security','online_backup','device_protection','tech_support','streaming_tv','streaming_movies','paperless_billing','churn','internet_service_type','gender'],inplace=True)
+    return df_telco
 
 def split_telco(df):
     df_telco=prep_telco(df)
