@@ -21,7 +21,7 @@ def prep_telco(df):
     return df_telco
 
 def prep_telcowdate(df):
-    df_telco=acquire.get_telco_data()
+    df_telco=acquire.get_telco_data_wdate()
     df_telco.drop(columns=['internet_service_type_id','contract_type_id','payment_type_id',
                        ],inplace=True)
     dummy_df_telco = pd.get_dummies(df_telco[['partner','dependents','phone_service','multiple_lines','online_security','online_backup','device_protection','tech_support','streaming_tv','streaming_movies','paperless_billing','churn','internet_service_type','gender']], dummy_na=False, drop_first=[True])
