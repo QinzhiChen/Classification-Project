@@ -54,7 +54,11 @@ Data Dictionary
 •	 26  internet_service_type_Fiber optic      4225 non-null   uint8  
 •	 27  internet_service_type_None             4225 non-null   uint8  
 •	 28  gender_Male                            4225 non-null   uint8  
-
+Initial Questions
+•	Question 1: Whether the contract type impact the churn at what month
+•	Question 2: Whether the features play significant role in December
+•	Question 3: Whether the monthly charges has significant impact on customers
+•	Question 4: Whether the signup month has impact on churn
 Initial Hypotheses
 •	Hypothesis 1 -
 •	alpha = .05
