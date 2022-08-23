@@ -23,7 +23,6 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 from env import host, user, password
 import acquire
 import prepare
-import explore
 
 
 # # Acquire Data and Prepare Data
@@ -86,9 +85,7 @@ telco_train
 # In[9]:
 
 
-telco_train.drop(columns=['internet_service_type_id.1','payment_type_id.1','contract_type_id.1'],inplace=True)
-telco_validate.drop(columns=['internet_service_type_id.1','payment_type_id.1','contract_type_id.1'],inplace=True)
-telco_test.drop(columns=['internet_service_type_id.1','payment_type_id.1','contract_type_id.1'],inplace=True)
+
 
 
 # # Explore Data
@@ -134,11 +131,17 @@ telco_train['signup_month'].value_counts()
 # In[16]:
 
 
-def signup_date(df):
+def signup_date_train(df):
     df['signup_month']=pd.DatetimeIndex(telco_train['signup_date']).month
     return df
 
+def signup_date_val(df):
+    df['signup_month']=pd.DatetimeIndex(telco_validate['signup_date']).month
+    return df
 
+def signup_date_test(df):
+    df['signup_month']=pd.DatetimeIndex(telco_test['signup_date']).month
+    return df
 # In[17]:
 
 
